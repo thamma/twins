@@ -603,7 +603,7 @@
       "texts": [
         {
           "text": [
-            "Als {ktane_chest_perm_article_det[player][ktane_chest_perm_idx]} die Flammen ",
+            "Als der Gegenstand die Flammen ",
             "des Ofens berührt, schießt dir eine Stichflamme entgegen, deren Wucht ",
             "den Ofen umwirft, und einen schulterhohen Gang dahinter freilegt.",
             "<br><br>",
@@ -623,7 +623,7 @@
       "texts": [
         {
           "text": [
-            "Als {ktane_chest_perm_article_det[player][ktane_chest_perm_idx]} die Flammen ",
+            "Als der Gegenstand die Flammen ",
             "des Ofens berührt, schießt dir eine violette Stichflamme entgegen, in der ",
             "er direkt verglüht.",
             "<br><br>",
