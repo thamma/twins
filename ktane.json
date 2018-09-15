@@ -5,9 +5,9 @@
       "texts": [
         {
           "text": [
-              "Du befindest dich in einem engen Raum. In einem Lichtkegel steht ein Tisch und ein Stuhl.<br><br> ",
-              "Du setzt dich auf den Stuhl. Vor dir liegt das Handbuch zur Labyrithflucht.<br><br> ",
-              "Du vernimmst eine vertraute Stimme. "
+            "Du befindest dich in einem engen Raum. In einem Lichtkegel steht ein Tisch und ein Stuhl.<br><br> ",
+            "Du setzt dich auf den Stuhl. Vor dir liegt das Handbuch zur Labyrithflucht.<br><br> ",
+            "Du vernimmst eine vertraute Stimme. "
           ]
         }
       ],
@@ -19,9 +19,9 @@
       "texts": [
         {
           "text": [
-              "Dieser Bildschirm ist nur für deine Augen bestimmt.<br><br> ",
-              "Dir ist es nicht gestattet, in das Handbuch zur Labyrinthflucht zu schauen.<br><br> ",
-              "Dir ist es gestattet, mit deinem Mitspieler zu reden. "
+            "Dieser Bildschirm ist nur für deine Augen bestimmt.<br><br> ",
+            "Dir ist es nicht gestattet, in das Handbuch zur Labyrinthflucht zu schauen.<br><br> ",
+            "Dir ist es gestattet, mit deinem Mitspieler zu reden. "
           ]
         }
       ],
@@ -120,7 +120,7 @@
             "Ein dritter, roter, Zeiger ist nicht gerade wie die anderen beiden, sondern gezackt, wellenlinig und endet mit einer Pfeilspitze.<br><br> ",
             "Lediglich der rote Zeiger lässt sich bewegen. Die anderen beiden bleiben starr. "
           ],
-         "guard": "player != vegan"
+          "guard": "player != vegan"
         }
       ],
       "edges": [
@@ -191,8 +191,8 @@
       "texts": [
         {
           "text": [
-             "Das Auge auf der Tür öffnet sich. Es starrt dich an. Der Mund um die Türklinke zieht sich in die Breite und wackelt etwas. Lacht die Tür etwa?!<br><br> ",
-             "Das Auge schließt sich langsam wieder. Unter lautem Knarren läuft die Tür auf. "
+            "Das Auge auf der Tür öffnet sich. Es starrt dich an. Der Mund um die Türklinke zieht sich in die Breite und wackelt etwas. Lacht die Tür etwa?!<br><br> ",
+            "Das Auge schließt sich langsam wieder. Unter lautem Knarren läuft die Tür auf. "
           ]
         }
       ],
@@ -209,8 +209,8 @@
       "texts": [
         {
           "text": [
-             "Das Auge auf der Tür zuckt zusammen. Es öffnet sich leicht, verharrt aber in Ruhe. Der Mund um die Türklinke entspannt sich und ein fleischfarbener Hautlappen ragt heraus.<CR><CR> ",
-             "Du hast den Zauber gebrochen. Die Türklinke wirkt nicht mehr furchteinflößend and das leise Knurren der Tür ist verstummt."
+            "Das Auge auf der Tür zuckt zusammen. Es öffnet sich leicht, verharrt aber in Ruhe. Der Mund um die Türklinke entspannt sich und ein fleischfarbener Hautlappen ragt heraus.<CR><CR> ",
+            "Du hast den Zauber gebrochen. Die Türklinke wirkt nicht mehr furchteinflößend and das leise Knurren der Tür ist verstummt."
           ]
         }
       ],
@@ -376,7 +376,7 @@
         {
           "target": "ktane_poet",
           "label": "<++> next puzzle pls",
-          "action": "ktane_cards_seq = ''; ktane_last = 'Neben der Kristallkugel'"
+          "action": "ktane_cards_seq = ''; ktane_last = 'Neben der Kristallkugel'; ktane_cards_solved = True"
         }
       ]
     },
@@ -512,7 +512,7 @@
           "text": [
             "<++> door, room with anti-magic gadget"
           ],
-          "guard": "player == vegan"
+          "guard": "player != vegan"
         }
       ],
       "edges": [
@@ -527,19 +527,136 @@
       "texts": [
         {
           "text": [
-            "<++> instance 1"
+            "<++> instance 1<br>",
+            "find: '{ktane_chest_perm[player][ktane_chest_perm_idx]}'"
           ],
           "guard": "player == vegan"
         },
         {
           "text": [
-            "<++> instance 2"
+            "<++> instance 2<br>",
+            "find: '{ktane_chest_perm[player][ktane_chest_perm_idx]}'"
           ],
           "guard": "player != vegan"
         }
       ],
       "edges": [
+        {
+          "target": "ktane_chest2",
+          "label": "<++> search again",
+          "action": "ktane_chest_perm_idx += 1; ktane_chest_perm_idx %= len(ktane_chest_perm[player])"
+        },
+        {
+          "target": "ktane_chest_fail",
+          "label": "<++> submit",
+          "guard": "ktane_chest_perm_idx != {0: 3, 1: 2}[player]"
+        },
+        {
+          "target": "ktane_chest_succ",
+          "label": "<++> submit",
+          "guard": "ktane_chest_perm_idx == {0: 3, 1: 2}[player]"
+        }
       ]
+    },
+    {
+      "id": "ktane_chest_fail",
+      "texts": [
+        {
+          "text": [
+            "<++> ohno"
+          ]
+        }
+      ],
+      "edges": [
+        {
+          "target": "ktane_69",
+          "label": "<++> :("
+        }
+      ]
+    },
+    {
+      "id": "ktane_chest_succ",
+      "texts": [
+        {
+          "text": [
+            "<++> yay"
+          ]
+        }
+      ],
+      "edges": [
+        {
+          "target": "ktane_switch_expert",
+          "label": "<++> k whats next?",
+          "action": "teleport(other_player, 'ktane_switch_defuser')"
+        }
+      ]
+    },
+    {
+      "id": "ktane_switch_expert",
+      "on_enter": "ktane_switch += 1; ktane_clock_solved = ktane_cards_solved = ktane_poet_solved = False; ktane_chest_perm_idx = 0",
+      "texts": [
+        {
+          "text": [
+            "<++> you are teleported again"
+          ]
+        }
+      ],
+      "edges": [
+        {
+          "target": "ktane_spawn_A",
+          "label": "Ahhh!",
+          "guard": "ktane_switch == 1"
+        },
+        {
+          "target": "ktane_exit_A",
+          "label": "Ahhh!",
+          "guard": "ktane_switch == 2"
+        }
+      ]
+    },
+    {
+      "id": "ktane_switch_defuser",
+      "texts": [
+        {
+          "text": [
+            "<++> you are teleported again"
+          ]
+        }
+      ],
+      "edges": [
+        {
+          "target": "ktane_69",
+          "label": "Ahhh!",
+          "guard": "ktane_switch == 1"
+        },
+        {
+          "target": "ktane_exit_B",
+          "label": "Ahhh!",
+          "guard": "ktane_switch == 2"
+        }
+      ]
+    },
+    {
+      "id": "ktane_exit_A",
+      "texts": [
+        {
+          "text": [
+            "<++> exit A"
+          ]
+        }
+      ],
+      "edges": []
+    },
+    {
+      "id": "ktane_exit_B",
+      "texts": [
+        {
+          "text": [
+            "<++> exit B"
+          ]
+        }
+      ],
+      "edges": []
     }
   ],
   "env": {
@@ -547,6 +664,9 @@
     "ktane_cards_solved": "False",
     "ktane_last": "'Neben der Kristallkugel'",
     "ktane_poet_solved": "False",
-    "ktane_cards_seq": "''"
+    "ktane_cards_seq": "''",
+    "ktane_chest_perm": "{0: ['some', 'body', 'once', 'told', 'me'], 1: ['the', 'world', 'is', 'gonna', 'roll', 'me']}",
+    "ktane_chest_perm_idx": "0",
+    "ktane_switch": "0"
   }
 }

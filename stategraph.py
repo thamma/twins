@@ -145,13 +145,13 @@ maze_nonplanar_edge(14, 4, 11, 1)
 maze_nonplanar_edge(15, 2, 0, 5)
 maze_nonplanar_edge(15, 4, 6, 1)
 
-Graph.node("maze_exit", text="You got out of the maze :D")
+Graph.node("maze_exit", text="<++> You got out of the maze :D")
 
 for node_id in maze_nodes:
     Graph.nodes[node_id].edges.sort(key=lambda e: Graph.edges[e].label)
 
 
-    @Graph.edge(node_id, "maze_exit", label="Leave maze")
+    @Graph.edge(node_id, "maze_exit", label="<++> Leave maze")
     def edge(s):
         s.pos[s.other_player] = "maze_exit"
 
@@ -166,3 +166,6 @@ for node_id in maze_nodes:
 
 Graph.edge("2btn_exit_A", "ktane_spawn_A", label="Ahhh!", guard=lambda s: s.env["_2btn_barrier"] == 2)
 Graph.edge("2btn_exit_B", "ktane_spawn_B", label="Ahhh!", guard=lambda s: s.env["_2btn_barrier"] == 2)
+
+Graph.edge("ktane_exit_A", "maze_0_1", label="<++> enter final maze")
+Graph.edge("ktane_exit_B", "maze_10_0", label="<++> enter final maze")

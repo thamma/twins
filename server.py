@@ -113,7 +113,8 @@ async def admin_handler(websocket):
                 "vegan0": "Make player 0 vegan",
                 "vegan1": "Make player 1 vegan",
                 "tetra": "Test tetra",
-                "ktane": "Test ktane"
+                "ktane": "Test ktane",
+                "ktane2": "Test ktane2"
             }
         }
     }))
@@ -135,6 +136,11 @@ async def admin_handler(websocket):
         elif msg == "ktane":
             Graph.gamestate.pos[0] = "ktane_spawn_A"
             Graph.gamestate.pos[1] = "ktane_spawn_B"
+        elif msg == "ktane2":
+            Graph.gamestate.env["ktane_clock_solved"] = True
+            Graph.gamestate.env["ktane_cards_solved"] = True
+            Graph.gamestate.pos[1] = "ktane_spawn_A"
+            Graph.gamestate.pos[0] = "ktane_cards_succ"
         elif msg == "vegan0":
             Graph.gamestate.env["vegan"] = 0
         elif msg == "vegan1":
