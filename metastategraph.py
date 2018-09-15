@@ -154,11 +154,10 @@ class MetaStateGraph:
         edge = self.edges[edge_id]
         edge.on_taken(self.gamestate)
         node = self.nodes[edge.target]
+        self.gamestate.pos[player_id] = node.id
         node.on_enter(self.gamestate)
 
         # print(f'step: {player_id}, {old_node.id} --[{edge.id}]-> {node.id}')
-
-        self.gamestate.pos[player_id] = node.id
 
     def node(self, node_id, text=None, image=None):
         if node_id in self.nodes:

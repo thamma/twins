@@ -254,6 +254,7 @@
     },
     {
       "id": "ktane_cards2",
+      "on_enter": "if player == vegan:\n    if ktane_cards_seq == '94B328A56710KD':\n        print('TELEPORT SUCC')\n        teleport(player, 'ktane_cards_succ')\n    elif not '94B328A56710KD'.startswith(ktane_cards_seq):\n        print('TELEPORT FAIL')\n        teleport(player, 'ktane_cards_fail')\nelse:\n    if ktane_cards_seq == '310B5KAD682794':\n        print('TELEPORT SUCC')\n        teleport(player, 'ktane_cards_succ')\n    elif not '310B5KAD682794'.startswith(ktane_cards_seq):\n        print('TELEPORT FAIL')\n        teleport(player, 'ktane_cards_fail')\n",
       "texts": [
         {
           "text": [
@@ -347,7 +348,6 @@
     },
     {
       "id": "ktane_cards_fail",
-      "on_enter": "ktane_cards_seq = ''",
       "texts": [
         {
           "text": [
@@ -358,13 +358,13 @@
       "edges": [
         {
           "target": "ktane_69",
-          "label": "<++> bamboozled again!"
+          "label": "<++> bamboozled again!",
+          "action": "ktane_cards_seq = ''"
         }
       ]
     },
     {
       "id": "ktane_cards_succ",
-      "on_enter": "ktane_cards_seq = ''",
       "texts": [
         {
           "text": [
@@ -375,7 +375,8 @@
       "edges": [
         {
           "target": "ktane_poet",
-          "label": "<++> next puzzle pls"
+          "label": "<++> next puzzle pls",
+          "action": "ktane_cards_seq = ''"
         }
       ]
     },
