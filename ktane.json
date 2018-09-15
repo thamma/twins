@@ -261,9 +261,9 @@
             "Du stehst vor einem hüfthohen Tisch, auf dem ein Kerzenständer mit einer brennenden Kerze, zahlreiche Teelichter, eine Kristallkugel sowie eine Menge Spielkarten liegen auf einem violetten Deckchen mit Spitze.<br><br> ",
             "Die Spielkarten sind zeilenweise angeordnet. In der ersten Zeile steht ein Teelicht, daneben liegt eine Pik Zwei, daneben eine Karo Dame und eine Kreuz Sieben. ",
             "Unter dem ersten Teelicht beginnt die zweite Zeile: Herz Vier, Herz König, Karo Acht, Herz Bube, Karo Zehn. ",
-            "Die dritte Zeile enthält eine Karo Fünf, eine Pik Neun, ein Teelicht und eine Pik Sechs.",
-            "Unterhalb der Karo Fünf liegt ein Herz Ass, unter der Pik Neun liegt eine Herz Drei.",
-            "Auf der Pik Neun steht eine Schachfigur: eine schwarze Dame."
+            "Die dritte Zeile enthält eine Karo Fünf, eine Pik Neun, ein Teelicht und eine Pik Sechs. ",
+            "Unterhalb der Karo Fünf liegt ein Herz Ass, unter der Pik Neun liegt eine Herz Drei.<br><br>",
+            "{ktane_last} steht eine Schachfigur: eine schwarze Dame."
           ],
           "guard": "player == vegan"
         },
@@ -272,77 +272,77 @@
             "Du stehst vor einem hüfthohen Tisch, auf dem ein Kerzenständer mit einer brennenden Kerze, zahlreiche Teelichter, eine Kristallkugel sowie eine Menge Spielkarten liegen auf einem violetten Deckchen mit Spitze.<br><br> ",
             "Die Spielkarten sind um ein Teelicht herum angeordnet. ",
             "Oberhalb des Teelichts liegt eine Herz Sieben, rechts davon eine Herz Zehn. Unter der Herz Zehn, also rechts von dem Teelicht befindet sich eine Pik Dame. Darunter liegt eine Pik Neun. Links davon liegen eine Karo Drei und eine Karo Sechs. Über der Karo Sechs - also links von dem Teelicht - liegt ein Karo Bube, worüber ein Karo Ass liegt. ",
-            "Außerdem liegen vereinzelt links von der Karo Sechs ein Karo König, unter der Karo Drei eine Kreuz Fünf, unter der Pik Neun eine Herz Acht, rechts von der Herz Zehn eine Kreuz Vier und rechts von der Pik Dame liegt eine Karo Zwei.",
-            "Auf der Karo Drei steht eine Schachfigur: ein schwarzer Springer."
+            "Außerdem liegen vereinzelt links von der Karo Sechs ein Karo König, unter der Karo Drei eine Kreuz Fünf, unter der Pik Neun eine Herz Acht, rechts von der Herz Zehn eine Kreuz Vier und rechts von der Pik Dame liegt eine Karo Zwei.<br><br>",
+            "{ktane_last} steht eine Schachfigur: ein schwarzer Springer."
           ],
-          "guard": "player == vegan"
+          "guard": "player != vegan"
         }
       ],
       "edges": [
         {
           "target": "ktane_cards2",
           "label": "Ich bewege die Schachfigur auf das Ass",
-          "action": "ktane_cards_seq += 'A'"
+          "action": "ktane_cards_seq += 'A'; ktane_last = 'Auf dem Ass'"
         },
         {
           "target": "ktane_cards2",
           "label": "Ich bewege die Schachfigur auf die Zwei",
-          "action": "ktane_cards_seq += '2'"
+          "action": "ktane_cards_seq += '2'; ktane_last = 'Auf der Zwei'"
         },
         {
           "target": "ktane_cards2",
           "label": "Ich bewege die Schachfigur auf die Drei",
-          "action": "ktane_cards_seq += '3'"
+          "action": "ktane_cards_seq += '3'; ktane_last = 'Auf der Drei'"
         },
         {
           "target": "ktane_cards2",
           "label": "Ich bewege die Schachfigur auf die Vier",
-          "action": "ktane_cards_seq += '4'"
+          "action": "ktane_cards_seq += '4'; ktane_last = 'Auf der Vier'"
         },
         {
           "target": "ktane_cards2",
           "label": "Ich bewege die Schachfigur auf die Fünf",
-          "action": "ktane_cards_seq += '5'"
+          "action": "ktane_cards_seq += '5'; ktane_last = 'Auf der Fünf'"
         },
         {
           "target": "ktane_cards2",
           "label": "Ich bewege die Schachfigur auf die Sechs",
-          "action": "ktane_cards_seq += '6'"
+          "action": "ktane_cards_seq += '6'; ktane_last = 'Auf der Sechs'"
         },
         {
           "target": "ktane_cards2",
           "label": "Ich bewege die Schachfigur auf die Sieben",
-          "action": "ktane_cards_seq += '7'"
+          "action": "ktane_cards_seq += '7'; ktane_last = 'Auf der Sieben'"
         },
         {
           "target": "ktane_cards2",
           "label": "Ich bewege die Schachfigur auf die Acht",
-          "action": "ktane_cards_seq += '8'"
+          "action": "ktane_cards_seq += '8'; ktane_last = 'Auf der Acht'"
         },
         {
           "target": "ktane_cards2",
           "label": "Ich bewege die Schachfigur auf die Neun",
-          "action": "ktane_cards_seq += '9'"
+          "action": "ktane_cards_seq += '9'; ktane_last = 'Auf der Neun'"
         },
         {
           "target": "ktane_cards2",
           "label": "Ich bewege die Schachfigur auf die Zehn",
-          "action": "ktane_cards_seq += '10'"
+          "action": "ktane_cards_seq += '10'; ktane_last = 'Auf der Zehn'"
         },
         {
           "target": "ktane_cards2",
           "label": "Ich bewege die Schachfigur auf den Buben",
-          "action": "ktane_cards_seq += 'B'"
+          "action": "ktane_cards_seq += 'B'; ktane_last = 'Auf dem Buben'"
         },
         {
           "target": "ktane_cards2",
           "label": "Ich bewege die Schachfigur auf die Dame",
-          "action": "ktane_cards_seq += 'D'"
+          "action": "ktane_cards_seq += 'D'; ktane_last = 'Auf der Dame'"
         },
         {
           "target": "ktane_cards2",
           "label": "Ich bewege die Schachfigur auf den König",
-          "action": "ktane_cards_seq += 'K'"
+          "action": "ktane_cards_seq += 'K'; ktane_last = 'Auf dem König'"
         }
       ]
     },
@@ -359,7 +359,7 @@
         {
           "target": "ktane_69",
           "label": "<++> bamboozled again!",
-          "action": "ktane_cards_seq = ''"
+          "action": "ktane_cards_seq = ''; ktane_last = 'Neben der Kristallkugel'"
         }
       ]
     },
@@ -376,7 +376,7 @@
         {
           "target": "ktane_poet",
           "label": "<++> next puzzle pls",
-          "action": "ktane_cards_seq = ''"
+          "action": "ktane_cards_seq = ''; ktane_last = 'Neben der Kristallkugel'"
         }
       ]
     },
@@ -545,6 +545,7 @@
   "env": {
     "ktane_clock_solved": "False",
     "ktane_cards_solved": "False",
+    "ktane_last": "'Neben der Kristallkugel'",
     "ktane_poet_solved": "False",
     "ktane_cards_seq": "''"
   }
