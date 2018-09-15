@@ -72,6 +72,74 @@ tetra_texts = {
     i: f"{enter_texts[i%len(enter_texts)]} {doors_texts[i%len(doors_texts)]} {random_fluff_pre[i%len(random_fluff_pre)]} <br><br> {color_fluff[i%len(color_fluff)]} {random_fluff_post[i%len(random_fluff_post)]}" for i in range(16)
 }
 
+ktane_chest_perm_ind = [
+    [
+        "einen Silberspiegel",
+        "eine Metallbox voller weißer Kreide",
+        "ein Nadelkissen",
+        "einen roten Bauklotz in Form einer brücke"
+        "eine Walnuss",
+        "eine Gabel, der ein Zacken fehlt",
+        "ein Taschenbuch mit einem getrockneten Falter",
+        "einen Nussknacker",
+        "einen Stoffbär ohne Ohren",
+        "einen kleinen Kaktus im Blumentopf",
+        "ein Kindermesser",
+        "einen Flaschenöffner",
+        "einen blauen Wachsmalstift",
+        "einen gelben Bauklotz",
+        "eine Vinylschallplatte",
+        ],
+    [
+        "eine Walnuss",
+        "ein Visier",
+        "einen Stoffbär ohne Ohren",
+        "ein Kamm",
+        "einen Flaschenöffner",
+        "einen linken rechten Handschuh",
+        "eine Stoffmaus",
+        "ein abgebrochener Glasboden eines Einmachglases",
+        "einen Fingerhut",
+        "einen Nussknacker",
+        "eine von Kinderhand gezeichnete Schatzkarte",
+        "ein Taschenbuch mit einem getrockneten Falter",
+        ]
+    ]
+
+ktane_chest_perm_det = [[
+    "den Silberspiegel",
+    "die Metallbox",
+    "das Nadelkissen",
+    "den Bauklotz"
+    "die Walnuss",
+    "die Gabel",
+    "das Taschenbuch",
+    "den Nussknacker",
+    "den Stoffbär",
+    "den Kaktus",
+    "das Messer",
+    "den Flaschenöffner",
+    "den blauen Wachsmalstift",
+    "den Bauklotz",
+    "die Schallplatte",
+    ],
+    [
+        "die Walnuss",
+        "das Visier",
+        "den Stoffbär",
+        "den Kamm",
+        "den Flaschenöffner",
+        "den Handschuh",
+        "die Stoffmaus",
+        "den Glasboden",
+        "den Fingerhut",
+        "den Nussknacker",
+        "die Schatzkarte",
+        "das Taschenbuch",
+        ]
+    ]
+
+
 
 def maze_add_node(room_num, view):
     node_id = f"maze_{room_num}_{view}"

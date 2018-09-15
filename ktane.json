@@ -530,7 +530,7 @@
           "text": [
             "Nach einigen Minuten völliger Finsternis siehst du Tageslicht einen Raum erfüllen. ",
             "Du hechtest die Treppe hinauf und findest dich in einem ovalen Raum, in dem eine Holzkiste auf einem Teppich steht. Daneben steht ein brennender Ofen mit offener Tür. Die Wärme des Ofens durchströmt dich und erfüllt dich mit erneuter Hoffnung.<br><br>",
-            "Die Holzkiste ist blickdicht gezimmert und ist oben offen. Zwei feste Tücher hängen über der Öffnung der Kiste und überlappen in deren Mitte. Am Rand der Öffnung sind sie mit Nägeln befestigt. <br><br>",
+            "Die Holzkiste ist solide gezimmert und ist oben offen. Zwei Filztücher hängen über der Öffnung der Kiste und überlappen in deren Mitte. Am Rand der Öffnung sind sie mit Nägeln befestigt. Einen Einblick in die Kiste kannst du nicht erhaschen. <br><br>",
             "Das anfänglich erleichternde Tageslicht beginnt dich zunehmend zu blenden. Dich orientieren fällt dir schwer. Du wirst merklich unruhig."
           ]
         }
@@ -548,26 +548,53 @@
         {
           "text": [
             "Du wühlst in der Kiste und greifst nach einem Gegenstand.<br><br>",
-            "Du findest '{ktane_chest_perm_article_ind[player][ktane_chest_perm_idx]}'"
-          ],
-          "guard": "player == vegan"
+            "Du findest {ktane_chest_perm_article_ind[player][ktane_chest_perm_idx]}."
+          ]
         }
       ],
       "edges": [
         {
-          "target": "ktane_chest2",
-          "label": "Du wirfst {ktane_chest_perm_article_det[player][ktane_chest_perm_idx]} ins Feuer des Ofens",
+          "target": "ktane_chest2_again",
+          "label": "Du packst {ktane_chest_perm_article_det[player][ktane_chest_perm_idx]} zurück in die Kiste.",
           "action": "ktane_chest_perm_idx += 1; ktane_chest_perm_idx %= len(ktane_chest_perm[player])"
         },
         {
           "target": "ktane_chest_fail",
-          "label": "<++> submit",
-          "guard": "ktane_chest_perm_idx != {0: 3, 1: 2}[player]"
+          "label": "Du wirfst {ktane_chest_perm_article_det[player][ktane_chest_perm_idx]} ins Feuer des Ofens.",
+          "guard": "ktane_chest_perm_idx != {0: 7, 1: 2}[player]"
         },
         {
           "target": "ktane_chest_succ",
-          "label": "<++> submit",
-          "guard": "ktane_chest_perm_idx == {0: 3, 1: 2}[player]"
+          "label": "Du wirfst {ktane_chest_perm_article_det[player][ktane_chest_perm_idx]} ins Feuer des Ofens.",
+          "guard": "ktane_chest_perm_idx == {0: 7, 1: 2}[player]"
+        }
+      ]
+    },
+    {
+      "id": "ktane_chest2_again",
+      "texts": [
+        {
+          "text": [
+            "Du wühlst erneut in der Kiste und greifst nach einem Gegenstand.<br><br>",
+            "Du findest {ktane_chest_perm_article_ind[player][ktane_chest_perm_idx]}."
+          ]
+        }
+      ],
+      "edges": [
+        {
+          "target": "ktane_chest2_again",
+          "label": "Du packst {ktane_chest_perm_article_det[player][ktane_chest_perm_idx]} zurück in die Kiste.",
+          "action": "ktane_chest_perm_idx += 1; ktane_chest_perm_idx %= len(ktane_chest_perm[player])"
+        },
+        {
+          "target": "ktane_chest_fail",
+          "label": "Du wirfst {ktane_chest_perm_article_det[player][ktane_chest_perm_idx]} ins Feuer des Ofens.",
+          "guard": "ktane_chest_perm_idx != {0: 7, 1: 2}[player]"
+        },
+        {
+          "target": "ktane_chest_succ",
+          "label": "Du wirfst {ktane_chest_perm_article_det[player][ktane_chest_perm_idx]} ins Feuer des Ofens.",
+          "guard": "ktane_chest_perm_idx == {0: 7, 1: 2}[player]"
         }
       ]
     },
