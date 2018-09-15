@@ -141,7 +141,7 @@ class MetaStateGraph:
         for edge_id in current_node.edges:
             edge = self.edges[edge_id]
             if edge.is_valid(self.gamestate):
-                result["transitions"][edge_id] = edge.label
+                result["transitions"][edge_id] = eval('f{}'.format(repr(edge.label)), None, self.gamestate.env)
 
         return result
 

@@ -140,6 +140,8 @@ ktane_chest_perm_det = [[
         ]
     ]
 
+Graph.gamestate.env["ktane_chest_perm_article_ind"] = ktane_chest_perm_ind
+Graph.gamestate.env["ktane_chest_perm_article_det"] = ktane_chest_perm_det
 
 
 def maze_add_node(room_num, view):
