@@ -1,0 +1,270 @@
+{
+  "nodes": [
+    {
+      "id": "2btn_init",
+      "texts": [
+        {
+          "text": [
+            "Du befindest Dich in einem Raum mit zwei {'offenen ' if _2btn_door_l1_open else ''}Türen die tiefer in ",
+            "die Ruine führen. {'Hinter der linken Tür ist ein Mechanismus auf dem Boden erkennbar.'",
+            "if _2btn_door_l1_open else 'Die linke Tür ist geschlossen.'}"
+          ]
+        }
+      ],
+      "edges": [
+        {
+          "target": "2btn_l1",
+          "label": "Gehe durch die linke Tür",
+          "guard": "_2btn_door_l1_open"
+        },
+        {
+          "target": "2btn_r1",
+          "label": "Gehe durch die rechte Tür"
+        }
+      ]
+    },
+    {
+      "id": "2btn_l1",
+      "texts": [
+        {
+          "text": [
+            "Du befindest dich in einem kleineren Raum mit einer {'offenen' if _2btn_door_l2_open else 'geschlossenen'}",
+            " Tür. Die Tür in Richtung Ausgang ist {'offen' if _2btn_door_l1_open else 'geschlossen'}, und auf dem ",
+            "Boden befindet sich eine Druckplatte."
+          ]
+        }
+      ],
+      "edges": [
+        {
+          "target": "2btn_btn1",
+          "label": "Druckplatte aktivieren"
+        },
+        {
+          "target": "2btn_l2",
+          "label": "Gehe tiefer in die Ruine",
+          "guard": "_2btn_door_l2_open"
+        },
+        {
+          "target": "2btn_init",
+          "label": "Gehe zurück",
+          "guard": "_2btn_door_l1_open"
+        }
+      ]
+    },
+    {
+      "id": "2btn_r2",
+      "texts": [
+        {
+          "text": [
+            "Du befindest dich in einem kleineren Raum mit einer {'offenen' if _2btn_door_r2_open else 'geschlossenen'}",
+            " Tür. Die Tür in Richtung Ausgang ist {'offen' if _2btn_door_exit_open else 'geschlossen'}, und auf dem ",
+            "Boden befindet sich eine Druckplatte."
+          ]
+        }
+      ],
+      "edges": [
+        {
+          "target": "2btn_btn2",
+          "label": "Druckplatte aktivieren"
+        },
+        {
+          "target": "2btn_exit",
+          "label": "Gehe tiefer in die Ruine",
+          "guard": "_2btn_l2_item"
+        },
+        {
+          "target": "2btn_r1",
+          "label": "Gehe zurück",
+          "guard": "_2btn_door_r2_open"
+        }
+      ]
+    },
+    {
+      "id": "2btn_btn1",
+      "texts": [
+        {
+          "text": [
+            "Es wurde offenbar eine magische Vorrichtung durch die Platte ausgelöst. ",
+            "Die Tür voraus ist {'offen' if _2btn_door_l2_open else 'geschlossen'}, und die Tür in Richtung Ausgang ",
+            "ist {'offen' if _2btn_door_l1_open else 'geschlossen'}."
+          ]
+        }
+      ],
+      "edges": [
+        {
+          "target": "2btn_l1",
+          "label": "Druckplatte deaktivieren"
+        }
+      ],
+      "on_empty": "_2btn_door_r2_open = False; _2btn_door_exit_open = True",
+      "on_occupied": "_2btn_door_r2_open = True; _2btn_door_exit_open = False"
+    },
+    {
+      "id": "2btn_btn2",
+      "texts": [
+        {
+          "text": [
+            "Es wurde offenbar eine magische Vorrichtung durch die Platte ausgelöst. ",
+            "Die Tür voraus ist {'offen' if _2btn_door_exit_open else 'geschlossen'}, und die Tür in Richtung Ausgang ",
+            "ist {'offen' if _2btn_door_r2_open else 'geschlossen'}."
+          ]
+        }
+      ],
+      "edges": [
+        {
+          "target": "2btn_r2",
+          "label": "Druckplatte deaktivieren"
+        }
+      ],
+      "on_empty": "_2btn_door_l1_open = True; _2btn_door_l2_open = False",
+      "on_occupied": "_2btn_door_l1_open = False; _2btn_door_l2_open = True"
+    },
+    {
+      "id": "2btn_l2",
+      "texts": [
+        {
+          "text": [
+            "In der Mitte des Raumes ist ein Podest, auf dem genau genug Platz für ",
+            "{'eine Möhre' if player == vegan else 'ein Käsesandwich'} ist. "
+          ],
+          "guard": "not bool(_2btn_l2_item)"
+        },
+        {
+          "text": [
+            "In der Mitte des Raumes ist ein Podest, auf dem {_2btn_l2_item} liegt. "
+          ],
+          "guard": "bool(_2btn_l2_item) and not bool(_2btn_exit_item)"
+        },
+        {
+          "text": [
+            "Der Gegenstand auf dem Podest wurde zu einem Schlüsselfragment!"
+          ],
+          "guard": "bool(_2btn_l2_item) and bool(_2btn_exit_item)"
+        }
+      ],
+      "edges": [
+        {
+          "target": "2btn_l2",
+          "label": "Platziere Sandwich",
+          "guard": "(player != vegan) and (not _2btn_l2_item) and (_2btn_exit_item != 'ein Sandwich')",
+          "action": "_2btn_l2_item = 'ein Sandwich'"
+        },
+        {
+          "target": "2btn_l2",
+          "label": "Platziere Möhre",
+          "guard": "(player == vegan) and (not _2btn_l2_item) and (_2btn_exit_item != 'eine Möhre')",
+          "action": "_2btn_l2_item = 'eine Möhre'"
+        },
+        {
+          "target": "2btn_exit_A",
+          "label": "Schlüsselfragment nehmen",
+          "guard": "bool(_2btn_l2_item) and bool(_2btn_exit_item)"
+        }
+      ]
+    },
+    {
+      "id": "2btn_r1",
+      "texts": [
+        {
+          "text": [
+            "An der Wand des Raumes hängt eine Maske aus Stein. ",
+            "Eine Tür führt tiefer in die Ruine{'' if _2btn_door_r2_open else ', aber sie ist geschlossen'}"
+          ]
+        }
+      ],
+      "edges": [
+        {
+          "target": "2btn_r2",
+          "label": "Gehe tiefer in die Ruine",
+          "guard": "_2btn_door_r2_open"
+        },
+        {
+          "target": "2btn_init",
+          "label": "Gehe zurück"
+        }
+      ]
+    },
+    {
+      "id": "2btn_exit",
+      "texts": [
+        {
+          "text": [
+            "In der Mitte des Raumes ist ein Podest, auf dem genau genug Platz für ",
+            "{'eine Möhre' if player == vegan else 'ein Käsesandwich'} ist. ",
+            "Die Tür in Richtung Ausgang ist {'offen' if _2btn_door_exit_open else 'geschlossen'}"
+          ],
+          "guard": "not bool(_2btn_exit_item)"
+        },
+        {
+          "text": [
+            "In der Mitte des Raumes ist ein Podest, auf dem {_2btn_exit_item} liegt. ",
+            "Die Tür in Richtung Ausgang ist {'offen' if _2btn_door_exit_open else 'geschlossen'}"
+          ],
+          "guard": "bool(_2btn_exit_item) and not bool(_2btn_l2_item)"
+        },
+        {
+          "text": [
+            "Der Gegenstand auf dem Podest wurde zu einem Schlüsselfragment!"
+          ],
+          "guard": "bool(_2btn_l2_item) and bool(_2btn_exit_item)"
+        }
+      ],
+      "edges": [
+                {
+          "target": "2btn_exit",
+          "label": "Platziere Sandwich",
+          "guard": "(player != vegan) and (not _2btn_exit_item) and (_2btn_l2_item != 'ein Sandwich')",
+          "action": "_2btn_exit_item = 'ein Sandwich'"
+        },
+        {
+          "target": "2btn_exit",
+          "label": "Platziere Möhre",
+          "guard": "(player == vegan) and (not _2btn_exit_item) and (_2btn_l2_item != 'eine Möhre')",
+          "action": "_2btn_exit_item = 'eine Möhre'"
+        },
+        {
+          "target": "2btn_exit_B",
+          "label": "Schlüsselfragment nehmen",
+          "guard": "bool(_2btn_l2_item) and bool(_2btn_exit_item)"
+        }
+      ]
+    },
+    {
+      "id": "2btn_exit_A",
+      "on_enter": "_2btn_barrier += 1",
+      "texts": [
+        {
+          "text": [
+            "Als Du das Schlüsselfragment berührst, wirst du plötzlich in einen anderen Raum teleportiert! ",
+            ""
+          ]
+        }
+      ],
+      "edges": [
+      ]
+    },
+    {
+      "id": "2btn_exit_B",
+      "on_enter": "_2btn_barrier += 1",
+      "texts": [
+        {
+          "text": [
+            "Als Du das Schlüsselfragment berührst, wirst du plötzlich in einen anderen Raum teleportiert! ",
+            ""
+          ]
+        }
+      ],
+      "edges": [
+      ]
+    }
+  ],
+  "env": {
+    "_2btn_door_l1_open": "True",
+    "_2btn_door_l2_open": "False",
+    "_2btn_door_r2_open": "False",
+    "_2btn_door_exit_open": "True",
+    "_2btn_l2_item": "None",
+    "_2btn_exit_item": "None",
+    "_2btn_barrier": "0"
+  }
+}

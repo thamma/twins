@@ -1,0 +1,39 @@
+{
+  "nodes": [
+    {
+      "id": "jojo_1",
+      "texts": [
+        {
+          "text": [
+            "Als nächstes wirst du fragen: 'Moment, ist das eine JoJo Referenz?'"
+          ]
+        }
+      ],
+      "images": [
+        {
+          "path": "jojo.png"
+        }
+      ],
+      "edges": [
+        {
+          "target": "jojo_2",
+          "label": "Moment, ist das eine JoJo Referenz?"
+        }
+      ]
+    },
+    {
+      "id": "jojo_2",
+      "texts": [
+        {
+          "text": [
+            "Ja."
+          ]
+        }
+      ],
+      "edges": [
+      ]
+    }
+  ],
+  "env": {
+  }
+}

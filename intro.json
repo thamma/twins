@@ -1,0 +1,230 @@
+{
+  "nodes": [
+    {
+      "id": "init",
+      "texts": [
+        {
+          "text": "Hauptmenü"
+        }
+      ],
+      "images": [
+        {
+          "path": "init.png"
+        }
+      ],
+      "edges": [
+        {
+          "target": "intro_text1",
+          "label": "Neues Spiel"
+        }
+      ]
+    },
+    {
+      "id": "intro_text1",
+      "texts": [
+        {
+          "text": [
+            "Vor langer Zeit lebten wir Menschen zusammen mit den Katzen, und wir waren glücklich und zufrieden. ",
+            "Wir konnten jeden Tag Katzen streicheln und Anime schauen so viel wir wollten, ",
+            "und niemand musste sich Sorgen machen"
+          ]
+        }
+      ],
+      "edges": [
+        {
+          "target": "intro_text2",
+          "label": "Okay..."
+        }
+      ]
+    },
+    {
+      "id": "intro_text2",
+      "texts": [
+        {
+          "text": [
+            "Doch eines Tages beschwor ein Zauberer versehentlich den Veganerhassenden Hackfleisch-Dämon. ",
+            "Ein wahrhaft fürchterliches Ungeheuer. Dieser nahm über Nacht alle Katzen gefangen, und versklavte sie ",
+            "zu niemals endender Arbeit in seiner Hackfleischfabrik, während er zusah und Weed rauchte"
+          ]
+        }
+      ],
+      "edges": [
+        {
+          "target": "intro_text3",
+          "label": "Wie grausam!"
+        }
+      ]
+    },
+    {
+      "id": "intro_text3",
+      "texts": [
+        {
+          "text": [
+            "Außerdem hat er ein mysteriöses Geburtstagsgeschenk und alle unsere Anime gestohlen. ",
+            "Jetzt müssen wir den ganzen Tag auf den Feldern arbeiten, ",
+            "damit wir uns irgendwann die Quest-Belohnung für einen mächtigen Abenteurer leisten können, ",
+            "der den Dämon besiegen kann."
+          ]
+        }
+      ],
+      "edges": [
+        {
+          "target": "intro_text4",
+          "label": "Ich bin ein Abenteurer!"
+        }
+      ]
+    },
+    {
+      "id": "intro_text4",
+      "on_enter": "barrier_1 += 1",
+      "texts": [
+        {
+          "text": "(Warte auf anderen Spieler)",
+          "guard": "barrier_1 != 2"
+        },
+        {
+          "text": [
+            "Ausgezeichnet! Jedoch können wir Dir keine Quest-Belohnung anbieten ",
+            "außer dem mysteriösen Geschenk. Kämpfst Du trotzdem gegen den Dämon?"
+          ],
+          "guard": "barrier_1 == 2"
+        }
+      ],
+      "edges": [
+        {
+          "target": "intro_text5",
+          "label": "Ich muss den Dämon besiegen weil er Veganer hasst!",
+          "guard": "barrier_1 == 2",
+          "action": "vegan = player; teleport(other_player, 'intro_text5')"
+        },
+        {
+          "target": "intro_text5",
+          "label": "Ich muss den Dämon besiegen und sein Weed erbeuten!",
+          "guard": "barrier_1 == 2",
+          "action": "vegan = other_player; teleport(other_player, 'intro_text5')"
+        }
+      ]
+    },
+    {
+      "id": "intro_text5",
+      "texts": [
+        {
+          "text": [
+            "Du bist also {'kein ' if vegan == other_player else ''} Veganer?"
+          ]
+        }
+      ],
+      "edges": [
+        {
+          "target": "intro_text6",
+          "label": "Korrekt."
+        },
+        {
+          "target": "intro_text4",
+          "label": "Also eigentlich...",
+          "action": "barrier_1 = 1; barrier_2 = 0",
+          "sync": 1
+        }
+      ]
+    },
+    {
+      "id": "intro_text6",
+      "on_enter": "barrier_2 += 1",
+      "texts": [
+        {
+          "text": "(Warte auf anderen Spieler)",
+          "guard": "barrier_2 != 2"
+        },
+        {
+          "text": [
+            "Alles klar. Um den Dämon zu besiegen musst Du zu den magischen Rätseln gelangen und diese lösen. ",
+            "Jedes davon wird seine Macht schwächen, so lange bis er wieder verbannt wird."
+          ],
+          "guard": "barrier_2 == 2"
+        }
+      ],
+      "edges": [
+        {
+          "target": "intro_text7",
+          "label": "Okay. Wie komme ich dort hin?",
+          "guard": "barrier_2 == 2"
+        }
+      ]
+    },
+    {
+      "id": "intro_text7",
+      "texts": [
+        {
+          "text": [
+            "Die Rätsel sind tief im Inneren einer Ruine. Hineinzukommen ist kein Problem, aber bisher ist noch ",
+            "niemand wieder daraus zurückgekehrt. Der Legende nach muss man zwei Fragmente eines magischen Schlüssels ",
+            "wieder zusammensetzen um die Ruine verlassen zu können"
+          ]
+        }
+      ],
+      "edges": [
+        {
+          "target": "intro_text8",
+          "label": "Oh, das klingt ja gruselig."
+        }
+      ]
+    },
+    {
+      "id": "intro_text8",
+      "texts": [
+        {
+          "text": [
+            "In der Tat. Es ist gefährlich, zu zweit dort hinzugehen. Hier, bitte."
+          ]
+        }
+      ],
+      "edges": [
+        {
+          "target": "intro_loot",
+          "label": "Uhh, was ist das?"
+        }
+      ]
+    },
+    {
+      "id": "intro_loot",
+      "on_enter": "barrier_3 += 1",
+      "texts": [
+        {
+          "text": "(Warte auf anderen Spieler)",
+          "guard": "barrier_3 != 2"
+        },
+        {
+          "text": [
+            "Du hast {'eine Möhre' if player == vegan else 'ein Käsesandwich'} erhalten!"
+          ],
+          "guard": "barrier_3 == 2"
+        }
+      ],
+      "edges": [
+        {
+          "target": "intro_exit",
+          "label": "Cool, danke!",
+          "guard": "barrier_3 == 2"
+        }
+      ]
+    },
+    {
+      "id": "intro_exit",
+      "texts": [
+        {
+          "text": [
+            "So, und jetzt viel Spaß mit den Rätseln! Der Eingang zur Ruine ist hier drüben"
+          ]
+        }
+      ],
+      "edges": [
+      ]
+    }
+  ],
+  "env": {
+    "barrier_1": "0",
+    "barrier_2": "0",
+    "barrier_3": "0",
+    "vegan": "None"
+  }
+}

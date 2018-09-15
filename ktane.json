@@ -1,0 +1,550 @@
+{
+  "nodes": [
+    {
+      "id": "ktane_spawn_A",
+      "texts": [
+        {
+          "text": [
+              "Du befindest dich in einem engen Raum. In einem Lichtkegel steht ein Tisch und ein Stuhl.<br><br> ",
+              "Du setzt dich auf den Stuhl. Vor dir liegt das Handbuch zur Labyrithflucht.<br><br> ",
+              "Du vernimmst eine vertraute Stimme. "
+          ]
+        }
+      ],
+      "edges": [
+      ]
+    },
+    {
+      "id": "ktane_spawn_B",
+      "texts": [
+        {
+          "text": [
+              "Dieser Bildschirm ist nur für deine Augen bestimmt.<br><br> ",
+              "Dir ist es nicht gestattet, in das Handbuch zur Labyrinthflucht zu schauen.<br><br> ",
+              "Dir ist es gestattet, mit deinem Mitspieler zu reden. "
+          ]
+        }
+      ],
+      "edges": [
+        {
+          "target": "ktane_69_init",
+          "label": "Ich verstehe."
+        }
+      ]
+    },
+    {
+      "id": "ktane_69_init",
+      "texts": [
+        {
+          "text": [
+            "Du befindest dich in einem quadratischen Raum. Auf dem Steinernen Boden ist parallel zu den Wänden ein weißes Quadrat gezeichnet. In dessen Mitte - direkt unter deinen Beinen - steht eine große Eins geschrieben.<br><br> ",
+            "Du schaust dich um. Der Raum hat genau einen Ausgang: ein schmaler Gang, vor dir, geradeaus. "
+          ]
+        }
+      ],
+      "edges": [
+        {
+          "target": "ktane_clock",
+          "label": "Ich folge dem schmalen Gang."
+        }
+      ]
+    },
+    {
+      "id": "ktane_69",
+      "texts": [
+        {
+          "text": [
+            "Du befindest dich in einem quadratischen Raum. Auf dem Steinernen Boden ist parallel zu den Wänden ein weißes Quadrat gezeichnet. In dessen Mitte steht eine große Eins geschrieben.<br><br> ",
+            "Du schaust dich um. Der Gang aus dem du in diesen Raum gelangt bist ist verschwunden. ",
+            "Übrig bleibt noch ein Ausgang: ein schmaler Gang. Er kommt dir bekannt vor. "
+          ]
+        }
+      ],
+      "edges": [
+        {
+          "target": "ktane_clock",
+          "label": "Ich folge dem vertrauten Gang."
+        }
+      ]
+    },
+    {
+      "id": "ktane_clock",
+      "texts": [
+        {
+          "text": [
+            "Du siehst eine offene Tür, an der eine Uhr angebracht ist."
+          ],
+          "guard": "ktane_clock_solved"
+        },
+        {
+          "text": [
+            "Du siehst eine haarige Tür mit einer Türklinke. Um die Türklinke ist Fleisch von blutverschmierten Zähnen begrenzt sichtbar. ",
+            "Auf deiner Augenhöhe siehst du ein großes Ziffernblatt mit drei Zeigern. Unterhalb der Uhr kannst du unter den Haaren die Ränder eines gigantisches Augenlids erahnen. "
+          ],
+          "guard": "not ktane_clock_solved"
+        }
+      ],
+      "edges": [
+        {
+          "target": "ktane_clock2",
+          "label": "Ich betrachte die Uhr genauer.",
+          "guard": "not ktane_clock_solved"
+        },
+        {
+          "target": "ktane_cards",
+          "label": "Ich lasse die Tür hinter mir.",
+          "guard": "ktane_clock_solved"
+        }
+      ]
+    },
+    {
+      "id": "ktane_clock2",
+      "texts": [
+        {
+          "text": [
+            "Das Ziffernblatt hat zwölf Zahlen an den Positionen, wie sie bei jeder gewöhnlichen Uhr vorzufinden sind. ",
+            "Die Ziffern sind jedoch in einer scheinbar wahllosen Reihenfolge angeordnet. ",
+            "Beginnend in der oberen Mitte - im Uhrzeigersinn - liest sich: 6, 4, 12, 11, 2, 9, 10, 5, 8, 7, 1, 3.<br><br> ",
+            "Zwei graue Zeiger - ein kurzer und ein langer - zeigen jeweils auf die Zahlen 11 und 4. ",
+            "Ein dritter Zeiger ist nicht gerade wie die anderen beiden, sondern gezackt, wellenlinig und endet mit einer Pfeilspitze.<br><br> ",
+            "Lediglich der rote Zeiger lässt sich bewegen. Die anderen beiden bleiben starr. "
+          ],
+          "guard": "player == vegan"
+        },
+        {
+          "text": [
+            "Das Ziffernblatt hat zwölf Zahlen an den Positionen, wie sie bei jeder gewöhnlichen Uhr vorzufinden sind. ",
+            "Die Ziffern sind jedoch in einer scheinbar wahllosen Reihenfolge angeordnet. ",
+            "Beginnend in der oberen Mitte - im Uhrzeigersinn - liest sich: 9, 10, 7, 11, 12, 6, 2, 3, 4, 8, 1, 5.<br><br> ",
+            "Zwei graue Zeiger - ein kurzer und ein langer - zeigen jeweils auf die Zahlen 10 und 8. ",
+            "Ein dritter, roter, Zeiger ist nicht gerade wie die anderen beiden, sondern gezackt, wellenlinig und endet mit einer Pfeilspitze.<br><br> ",
+            "Lediglich der rote Zeiger lässt sich bewegen. Die anderen beiden bleiben starr. "
+          ],
+         "guard": "player != vegan"
+        }
+      ],
+      "edges": [
+        {
+          "target": "ktane_clock_fail",
+          "label": "Ich stelle den roten Zeiger auf die Zahl 1 ein.",
+          "guard": "player == vegan"
+        },
+        {
+          "target": "ktane_clock_succ",
+          "label": "Ich stelle den roten Zeiger auf die Zahl 1 ein.",
+          "guard": "player != vegan"
+        },
+        {
+          "target": "ktane_clock_fail",
+          "label": "Ich stelle den roten Zeiger auf die Zahl 2 ein."
+        },
+        {
+          "target": "ktane_clock_fail",
+          "label": "Ich stelle den roten Zeiger auf die Zahl 3 ein."
+        },
+        {
+          "target": "ktane_clock_fail",
+          "label": "Ich stelle den roten Zeiger auf die Zahl 4 ein."
+        },
+        {
+          "target": "ktane_clock_fail",
+          "label": "Ich stelle den roten Zeiger auf die Zahl 5 ein."
+        },
+        {
+          "target": "ktane_clock_fail",
+          "label": "Ich stelle den roten Zeiger auf die Zahl 6 ein."
+        },
+        {
+          "target": "ktane_clock_fail",
+          "label": "Ich stelle den roten Zeiger auf die Zahl 7 ein."
+        },
+        {
+          "target": "ktane_clock_succ",
+          "label": "Ich stelle den roten Zeiger auf die Zahl 8 ein.",
+          "guard": "player == vegan"
+        },
+        {
+          "target": "ktane_clock_fail",
+          "label": "Ich stelle den roten Zeiger auf die Zahl 8 ein.",
+          "guard": "player != vegan"
+        },
+        {
+          "target": "ktane_clock_fail",
+          "label": "Ich stelle den roten Zeiger auf die Zahl 9 ein."
+        },
+        {
+          "target": "ktane_clock_fail",
+          "label": "Ich stelle den roten Zeiger auf die Zahl 10 ein."
+        },
+        {
+          "target": "ktane_clock_fail",
+          "label": "Ich stelle den roten Zeiger auf die Zahl 11 ein."
+        },
+        {
+          "target": "ktane_clock_fail",
+          "label": "Ich stelle den roten Zeiger auf die Zahl 12 ein."
+        }
+      ]
+    },
+    {
+      "id": "ktane_clock_fail",
+      "texts": [
+        {
+          "text": [
+             "Das Auge auf der Tür öffnet sich. Es starrt dich an. Der Mund um die Türklinke zieht sich in die Breite und wackelt etwas. Lacht die Tür etwa?!<br><br> ",
+             "Das Auge schließt sich langsam wieder. Unter lautem Knarren läuft die Tür auf. "
+          ]
+        }
+      ],
+      "edges": [
+        {
+          "target": "ktane_69",
+          "label": "Ich gehe hindurch."
+        }
+      ]
+    },
+    {
+      "id": "ktane_clock_succ",
+      "on_enter": "ktane_clock_solved = True",
+      "texts": [
+        {
+          "text": [
+             "Das Auge auf der Tür zuckt zusammen. Es öffnet sich leicht, verharrt aber in Ruhe. Der Mund um die Türklinke entspannt sich und ein fleischfarbener Hautlappen ragt heraus.<CR><CR> ",
+             "Du hast den Zauber gebrochen. Die Türklinke wirkt nicht mehr furchteinflößend and das leise Knurren der Tür ist verstummt."
+          ]
+        }
+      ],
+      "edges": [
+        {
+          "target": "ktane_cards",
+          "label": "Ich betätige zaghaft die Türklinke. Die Tür lässt sich öffnen. Das Monter bleibt starr. Ich öffne die Tür und trete hindurch."
+        }
+      ]
+    },
+    {
+      "id": "ktane_cards",
+      "texts": [
+        {
+          "text": [
+            "Du läufst durch einen weiteren breiter werdenden Gang. Das Licht des magischen Funkeln der hinterlassenen Tür lässt mit jedem Schritt nach, jedoch ist eine Lichtquelle in der Ferne erkennbar. <br><br>",
+            "Das Licht stammt von einer entzündeten Kerze auf einem Tisch am Ende des Ganges. "
+          ],
+          "guard": "not ktane_cards_solved"
+        },
+        {
+          "text": [
+            "Du läufst durch einen weiteren breiter werdenden Gang. Das Licht des magischen Funkeln der hinterlassenen Tür lässt mit jedem Schritt nach, jedoch ist eine Lichtquelle in der Ferne erkennbar. <br><br>",
+            "Die Lichtquelle stammt von einer Kerze auf einem Tisch, der in der Mitte des Ganges steht."
+          ],
+          "guard": "ktane_cards_solved"
+        }
+      ],
+      "edges": [
+        {
+          "target": "ktane_cards2",
+          "label": "Ich nähere mich an und betrachte den Tisch genauer.",
+          "guard": "not ktane_cards_solved"
+        },
+        {
+          "target": "ktane_poet",
+          "label": "Ich gehe am Tisch vorbei und folge dem Gang.",
+          "guard": "ktane_cards_solved"
+        }
+      ]
+    },
+    {
+      "id": "ktane_cards2",
+      "texts": [
+        {
+          "text": [
+            "Du stehst vor einem hüfthohen Tisch, auf dem ein Kerzenständer mit einer brennenden Kerze, zahlreiche Teelichter, eine Kristallkugel sowie eine Menge Spielkarten liegen auf einem violetten Deckchen mit Spitze.<br><br> ",
+            "Die Spielkarten sind zeilenweise angeordnet. In der ersten Zeile steht ein Teelicht, daneben liegt eine Pik Zwei, daneben eine Karo Dame und eine Kreuz Sieben. ",
+            "Unter dem ersten Teelicht beginnt die zweite Zeile: Herz Vier, Herz König, Karo Acht, Herz Bube, Karo Zehn. ",
+            "Die dritte Zeile enthält eine Karo Fünf, eine Pik Neun, ein Teelicht und eine Pik Sechs.",
+            "Unterhalb der Karo Fünf liegt ein Herz Ass, unter der Pik Neun liegt eine Herz Drei.",
+            "Auf der Pik Neun steht eine Schachfigur: eine schwarze Dame."
+          ],
+          "guard": "player == vegan"
+        },
+        {
+          "text": [
+            "Du stehst vor einem hüfthohen Tisch, auf dem ein Kerzenständer mit einer brennenden Kerze, zahlreiche Teelichter, eine Kristallkugel sowie eine Menge Spielkarten liegen auf einem violetten Deckchen mit Spitze.<br><br> ",
+            "Die Spielkarten sind um ein Teelicht herum angeordnet. ",
+            "Oberhalb des Teelichts liegt eine Herz Sieben, rechts davon eine Herz Zehn. Unter der Herz Zehn, also rechts von dem Teelicht befindet sich eine Pik Dame. Darunter liegt eine Pik Neun. Links davon liegen eine Karo Drei und eine Karo Sechs. Über der Karo Sechs - also links von dem Teelicht - liegt ein Karo Bube, worüber ein Karo Ass liegt. ",
+            "Außerdem liegen vereinzelt links von der Karo Sechs ein Karo König, unter der Karo Drei eine Kreuz Fünf, unter der Pik Neun eine Herz Acht, rechts von der Herz Zehn eine Kreuz Vier und rechts von der Pik Dame liegt eine Karo Zwei.",
+            "Auf der Karo Drei steht eine Schachfigur: ein schwarzer Springer."
+          ],
+          "guard": "player == vegan"
+        }
+      ],
+      "edges": [
+        {
+          "target": "ktane_cards2",
+          "label": "Ich bewege die Schachfigur auf das Ass",
+          "action": "ktane_cards_seq += 'A'"
+        },
+        {
+          "target": "ktane_cards2",
+          "label": "Ich bewege die Schachfigur auf die Zwei",
+          "action": "ktane_cards_seq += '2'"
+        },
+        {
+          "target": "ktane_cards2",
+          "label": "Ich bewege die Schachfigur auf die Drei",
+          "action": "ktane_cards_seq += '3'"
+        },
+        {
+          "target": "ktane_cards2",
+          "label": "Ich bewege die Schachfigur auf die Vier",
+          "action": "ktane_cards_seq += '4'"
+        },
+        {
+          "target": "ktane_cards2",
+          "label": "Ich bewege die Schachfigur auf die Fünf",
+          "action": "ktane_cards_seq += '5'"
+        },
+        {
+          "target": "ktane_cards2",
+          "label": "Ich bewege die Schachfigur auf die Sechs",
+          "action": "ktane_cards_seq += '6'"
+        },
+        {
+          "target": "ktane_cards2",
+          "label": "Ich bewege die Schachfigur auf die Sieben",
+          "action": "ktane_cards_seq += '7'"
+        },
+        {
+          "target": "ktane_cards2",
+          "label": "Ich bewege die Schachfigur auf die Acht",
+          "action": "ktane_cards_seq += '8'"
+        },
+        {
+          "target": "ktane_cards2",
+          "label": "Ich bewege die Schachfigur auf die Neun",
+          "action": "ktane_cards_seq += '9'"
+        },
+        {
+          "target": "ktane_cards2",
+          "label": "Ich bewege die Schachfigur auf die Zehn",
+          "action": "ktane_cards_seq += '10'"
+        },
+        {
+          "target": "ktane_cards2",
+          "label": "Ich bewege die Schachfigur auf den Buben",
+          "action": "ktane_cards_seq += 'B'"
+        },
+        {
+          "target": "ktane_cards2",
+          "label": "Ich bewege die Schachfigur auf die Dame",
+          "action": "ktane_cards_seq += 'D'"
+        },
+        {
+          "target": "ktane_cards2",
+          "label": "Ich bewege die Schachfigur auf den König",
+          "action": "ktane_cards_seq += 'K'"
+        }
+      ]
+    },
+    {
+      "id": "ktane_cards_fail",
+      "on_enter": "ktane_cards_seq = ''",
+      "texts": [
+        {
+          "text": [
+            "<++> cards failed :/"
+          ]
+        }
+      ],
+      "edges": [
+        {
+          "target": "ktane_69",
+          "label": "<++> bamboozled again!"
+        }
+      ]
+    },
+    {
+      "id": "ktane_cards_succ",
+      "on_enter": "ktane_cards_seq = ''",
+      "texts": [
+        {
+          "text": [
+            "<++> cards SUCC"
+          ]
+        }
+      ],
+      "edges": [
+        {
+          "target": "ktane_poet",
+          "label": "<++> next puzzle pls"
+        }
+      ]
+    },
+    {
+      "id": "ktane_poet",
+      "texts": [
+        {
+          "text": [
+            "<++> skip"
+          ],
+          "guard": "ktane_poet_solved"
+        },
+        {
+          "text": [
+            "<++> poet room 1 instance 1"
+          ],
+          "guard": "player == vegan and not ktane_poet_solved"
+        },
+        {
+          "text": [
+            "<++> poet room 2 instance 2"
+          ],
+          "guard": "player != vegan and not ktane_poet_solved"
+        }
+      ],
+      "edges": [
+        {
+          "target": "ktane_poet2",
+          "label": "<++> take closer look",
+          "guard": "not ktane_poet_solved"
+        },
+        {
+          "target": "ktane_chest",
+          "label": "<++> skip",
+          "guard": "ktane_poet_solved"
+        }
+      ]
+    },
+    {
+      "id": "ktane_poet2",
+      "texts": [
+        {
+          "text": [
+            "<++> poet instance 1"
+          ],
+          "guard": "player == vegan"
+        },
+        {
+          "text": [
+            "<++> poet instance 2"
+          ],
+          "guard": "player != vegan"
+        }
+      ],
+      "edges": [
+        {
+          "target": "ktane_poet_fail",
+          "label": "<++> incorrect option 1"
+        },
+        {
+          "target": "ktane_poet_fail",
+          "label": "<++> incorrect option 2"
+        },
+        {
+          "target": "ktane_poet_fail",
+          "label": "<++> incorrect option 3"
+        },
+        {
+          "target": "ktane_poet_succ",
+          "label": "<++> correct iff vegan",
+          "guard": "player == vegan"
+        },
+        {
+          "target": "ktane_poet_fail",
+          "label": "<++> correct iff vegan",
+          "guard": "player != vegan"
+        },
+        {
+          "target": "ktane_poet_succ",
+          "label": "<++> correct iffn't vegan",
+          "guard": "player != vegan"
+        },
+        {
+          "target": "ktane_poet_fail",
+          "label": "<++> correct iffn't vegan",
+          "guard": "player == vegan"
+        }
+      ]
+    },
+    {
+      "id": "ktane_poet_fail",
+      "texts": [
+        {
+          "text": [
+            "<++> oops, that was not aMAZEing"
+          ]
+        }
+      ],
+      "edges": [
+        {
+          "target": "ktane_69",
+          "label": "<++> damn"
+        }
+      ]
+    },
+    {
+      "id": "ktane_poet_succ",
+      "on_enter": "ktane_poet_solved = True",
+      "texts": [
+        {
+          "text": [
+            "<++> great!"
+          ]
+        }
+      ],
+      "edges": [
+        {
+          "target": "ktane_chest",
+          "label": "<++> next puzzle pls"
+        }
+      ]
+    },
+    {
+      "id": "ktane_chest",
+      "texts": [
+        {
+          "text": [
+            "<++> door, room with anti-magic gadget"
+          ],
+          "guard": "player == vegan"
+        },
+        {
+          "text": [
+            "<++> door, room with anti-magic gadget"
+          ],
+          "guard": "player == vegan"
+        }
+      ],
+      "edges": [
+        {
+          "target": "ktane_chest2",
+          "label": "<++> closer look"
+        }
+      ]
+    },
+    {
+      "id": "ktane_chest2",
+      "texts": [
+        {
+          "text": [
+            "<++> instance 1"
+          ],
+          "guard": "player == vegan"
+        },
+        {
+          "text": [
+            "<++> instance 2"
+          ],
+          "guard": "player != vegan"
+        }
+      ],
+      "edges": [
+      ]
+    }
+  ],
+  "env": {
+    "ktane_clock_solved": "False",
+    "ktane_cards_solved": "False",
+    "ktane_poet_solved": "False",
+    "ktane_cards_seq": "''"
+  }
+}
