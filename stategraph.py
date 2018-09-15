@@ -78,7 +78,7 @@ ktane_chest_perm_ind = [
         "einen Silberspiegel",
         "eine Metallbox voller weißer Kreide",
         "ein Nadelkissen",
-        "einen roten Bauklotz in Form einer brücke"
+        "einen roten Bauklotz in Form einer Brücke",
         "eine Walnuss",
         "eine Gabel, der ein Zacken fehlt",
         "ein Taschenbuch mit einem getrockneten Falter",
