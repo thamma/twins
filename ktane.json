@@ -603,14 +603,18 @@
       "texts": [
         {
           "text": [
-            "<++> ohno"
+            "Als {ktane_chest_perm_article_det[player][ktane_chest_perm_idx]} die Flammen ",
+            "des Ofens berührt, schießt dir eine Stichflamme entgegen, deren Wucht ",
+            "den Ofen umwirft, und einen schulterhohen Gang dahinter freilegt.",
+            "<br><br>",
+            "Du siehst eine Treppe emporsteigen. Aus dem Gang strömt noch mehr Tageslicht."
           ]
         }
       ],
       "edges": [
         {
           "target": "ktane_69",
-          "label": "<++> :("
+          "label": "Ich folge dem Gang"
         }
       ]
     },
@@ -619,14 +623,19 @@
       "texts": [
         {
           "text": [
-            "<++> yay"
+            "Als {ktane_chest_perm_article_det[player][ktane_chest_perm_idx]} die Flammen ",
+            "des Ofens berührt, schießt dir eine violette Stichflamme entgegen, in der ",
+            "er direkt verglüht.",
+            "<br><br>",
+            "Starr vor Schreck hast du keine Gelegenheit mehr zur Seite zu hechten, als ",
+            "du mitsamt dem Teppich in die Tiefe stürzt."
           ]
         }
       ],
       "edges": [
         {
           "target": "ktane_switch_expert",
-          "label": "<++> k whats next?",
+          "label": "Ahhh",
           "action": "teleport(other_player, 'ktane_switch_defuser')"
         }
       ]
@@ -637,19 +646,20 @@
       "texts": [
         {
           "text": [
-            "<++> you are teleported again"
+            "Du wachst in einem kleinen Raum auf dem Teppich auf. Schmerzen in Folge ",
+            "eines Aufpralls spürst du nicht."
           ]
         }
       ],
       "edges": [
         {
           "target": "ktane_spawn_A",
-          "label": "Ahhh!",
+          "label": "Ich sehe mich um.",
           "guard": "ktane_switch == 1"
         },
         {
           "target": "ktane_exit_A",
-          "label": "Ahhh!",
+          "label": "Ich sehe mich um.",
           "guard": "ktane_switch == 2"
         }
       ]
@@ -659,19 +669,19 @@
       "texts": [
         {
           "text": [
-            "<++> you are teleported again"
+            "Dein Handbuch zur Labyrinthflucht, der Stuhl auf dem du saßt und der Tisch verpuffen in einem Augenblick. Du fühlst dich beobachtet. "
           ]
         }
       ],
       "edges": [
         {
           "target": "ktane_69",
-          "label": "Ahhh!",
+          "label": "Ich schaue mich um.",
           "guard": "ktane_switch == 1"
         },
         {
           "target": "ktane_exit_B",
-          "label": "Ahhh!",
+          "label": "Ich schaue mich um.",
           "guard": "ktane_switch == 2"
         }
       ]
