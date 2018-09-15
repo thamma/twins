@@ -351,14 +351,16 @@
       "texts": [
         {
           "text": [
-            "<++> cards failed :/"
+            "Die Kristallkugel leuchtet auf. Mit einem Flackern, wie von einem Windzug,  erlischt die Kerze samt allen Teelichtern.<br><br>",
+            "Langsam formt sich eine dicke Nebelschicht zu deinen Füßen. Der Nebel steigt gemächlich, immer schneller werdend auf, bis er deine Sicht für kurze Zeit völlig blockiert. Als du wieder sehen kannst, brennen alle Kerzen wieder, als wären sie nie erloschen. <br><br>",
+            "Hinter dem Tisch enttarnte sich eine Treppe, die nach unten führt."
           ]
         }
       ],
       "edges": [
         {
           "target": "ktane_69",
-          "label": "<++> bamboozled again!",
+          "label": "Ich folge der Treppe.",
           "action": "ktane_cards_seq = ''; ktane_last = 'Neben der Kristallkugel'"
         }
       ]
@@ -368,14 +370,17 @@
       "texts": [
         {
           "text": [
-            "<++> cards SUCC"
+            "Ein Eisiger Wind weht in die Sackgasse hinein. Die Lichter der Kerzen flackern kurz und leuchten danach stärker auf als zuvor. ",
+            "Die Kristallkugel beginnt sich zu bewegen. Sie beginnt langsam zu rollen. Langsam aber zielstrebig rollt die Kristallkugel von der Tischkante herab. ",
+            "Du erschrickst als die massive Glaskugel auf dem steinernen Boden in unzählige kleine Splitter zerbricht. Glassplitter fliegen projektilartig quer durch den Raum. Tausendfach wird die dich umgebende Wand getroffen, jedoch scheinen alle Querschläger dich zu verfehlen. <br>",
+            "Die Einschlagspunkte an der Wand vor dir beginnen zu glühen. Ein großes leuchtendes Oval zeichnet sich unter allen Glassplittern an der Wand ab. Die Wand beginnt langsam abzubröckeln, beginnend kurz unter der niedrigen Decke. Nach kurzer Zeit sind genügend Steine herausgebrochen so dass du einen Durchgang klar erkennen kannst. "
           ]
         }
       ],
       "edges": [
         {
           "target": "ktane_poet",
-          "label": "<++> next puzzle pls",
+          "label": "Ich trete hindurch.",
           "action": "ktane_cards_seq = ''; ktane_last = 'Neben der Kristallkugel'; ktane_cards_solved = True"
         }
       ]
@@ -385,32 +390,26 @@
       "texts": [
         {
           "text": [
-            "<++> skip"
+            "Du siehst eine kleine geöffnete Tür in der Mitte des Ganges."
           ],
           "guard": "ktane_poet_solved"
         },
         {
           "text": [
-            "<++> poet room 1 instance 1"
+            "Eine massive Holztür versperrt dir den Weg. An ihr sind zehn Türklopfer angebrach, durchnummeriert mit den Ziffern 0 bis 9. Zu deiner Linken hebt sich ein Bereich der Wand besonders hervor. Auf dem fast kreidebleichen Stein steht Text geschrieben."
           ],
-          "guard": "player == vegan and not ktane_poet_solved"
-        },
-        {
-          "text": [
-            "<++> poet room 2 instance 2"
-          ],
-          "guard": "player != vegan and not ktane_poet_solved"
+          "guard": "not ktane_poet_solved"
         }
       ],
       "edges": [
         {
           "target": "ktane_poet2",
-          "label": "<++> take closer look",
+          "label": "Ich betrachte den Text genauer.",
           "guard": "not ktane_poet_solved"
         },
         {
           "target": "ktane_chest",
-          "label": "<++> skip",
+          "label": "Ich steige hindurch.",
           "guard": "ktane_poet_solved"
         }
       ]
@@ -420,13 +419,15 @@
       "texts": [
         {
           "text": [
-            "<++> poet instance 1"
+            "An der Wand steht in blutroter Farbe ein Text geschrieben. Die Buchstaben sind mit fast unleserlich dicken Strichen gemalt, fast als hätte man sie mit seinem Finger angebracht: <br><br>",
+            "You can! not leave. MAZE this room MAZE without?! a MAZE ment unless you MAZE; every room in the_MAZE the Maze Exit-Manual-MAZE-is-lying if..MAZE!no!maze exists. How MAZE can MAZE if our MAZE MAZE? Lying MAZE"
           ],
           "guard": "player == vegan"
         },
         {
           "text": [
-            "<++> poet instance 2"
+            "An der Wand ist reger Moosbewuchs erkennbar. Zwar ist das Moos regelmäßig gewachsen, es wurde aber an vielen Stellen sichtlich abgeschabt, so dass ein Text erkennbar ist: <br><br>",
+            "You can! not leave. MAZE this room MAZE without?! a MAZE ment unless you MAZE; every room in the_MAZE the Maze Exit-Manual-MAZE-is-lying if..MAZE!no!maze exists. How MAZE can MAZE if our MAZE MAZE? Lying MAZE"
           ],
           "guard": "player != vegan"
         }
@@ -434,35 +435,55 @@
       "edges": [
         {
           "target": "ktane_poet_fail",
-          "label": "<++> incorrect option 1"
+          "label": "Ich betätige den Türklopfer 0"
         },
         {
           "target": "ktane_poet_fail",
-          "label": "<++> incorrect option 2"
+          "label": "Ich betätige den Türklopfer 1"
         },
         {
           "target": "ktane_poet_fail",
-          "label": "<++> incorrect option 3"
+          "label": "Ich betätige den Türklopfer 2"
+        },
+        {
+          "target": "ktane_poet_fail",
+          "label": "Ich betätige den Türklopfer 3"
         },
         {
           "target": "ktane_poet_succ",
-          "label": "<++> correct iff vegan",
+          "label": "Ich betätige den Türklopfer 4",
           "guard": "player == vegan"
         },
         {
           "target": "ktane_poet_fail",
-          "label": "<++> correct iff vegan",
-          "guard": "player != vegan"
-        },
-        {
-          "target": "ktane_poet_succ",
-          "label": "<++> correct iffn't vegan",
+          "label": "Ich betätige den Türklopfer 4",
           "guard": "player != vegan"
         },
         {
           "target": "ktane_poet_fail",
-          "label": "<++> correct iffn't vegan",
+          "label": "Ich betätige den Türklopfer 5"
+        },
+        {
+          "target": "ktane_poet_fail",
+          "label": "Ich betätige den Türklopfer 6"
+        },
+        {
+          "target": "ktane_poet_fail",
+          "label": "Ich betätige den Türklopfer 7"
+        },
+        {
+          "target": "ktane_poet_succ",
+          "label": "Ich betätige den Türklopfer 8",
+          "guard": "player != vegan"
+        },
+        {
+          "target": "ktane_poet_fail",
+          "label": "Ich betätige den Türklopfer 8",
           "guard": "player == vegan"
+        },
+        {
+          "target": "ktane_poet_fail",
+          "label": "Ich betätige den Türklopfer 9"
         }
       ]
     },
@@ -471,14 +492,15 @@
       "texts": [
         {
           "text": [
-            "<++> oops, that was not aMAZEing"
+            "Du hörst ein Kichern. Eine helle Stimme antwortet: 'Herein!'<br><br>",
+            "Du öffnest die Tür. Sie lässt sich erstaunlich leicht öffnen, trotz dass sie so massiv ist. Dahinter liegt ein langer, schmaler Gang. Du siehst ein Licht an seinem Ende."
           ]
         }
       ],
       "edges": [
         {
           "target": "ktane_69",
-          "label": "<++> damn"
+          "label": "Ich folge dem Gang."
         }
       ]
     },
@@ -488,14 +510,16 @@
       "texts": [
         {
           "text": [
-            "<++> great!"
+            "Du klopfst, aber niemand antwortet. Du fragst dich, ob die Tür überhaupt abgeschlossen ist. Nach lebendigen, gefräßigen Türen ist das ein garnicht unkühner Gedanke. ",
+            "Du fasst dir Herz und öffnest behutsam die Tür. Als wäre sie so leicht wie Papier lässt sich die Tür öffnen. <br><br>",
+            "Hinter der Tür liegt eine Treppe. Die Stufen sind ungleich hoch und tief, was das erklimmen erschweren wird. Die Treppe führt zwar in tiefste Finsternis, aber ein Gesteinsvorsprung dient dir als Handlauf."
           ]
         }
       ],
       "edges": [
         {
           "target": "ktane_chest",
-          "label": "<++> next puzzle pls"
+          "label": "Ich folge der Treppe."
         }
       ]
     },
@@ -504,21 +528,17 @@
       "texts": [
         {
           "text": [
-            "<++> door, room with anti-magic gadget"
-          ],
-          "guard": "player == vegan"
-        },
-        {
-          "text": [
-            "<++> door, room with anti-magic gadget"
-          ],
-          "guard": "player != vegan"
+            "Nach einigen Minuten völliger Finsternis siehst du Tageslicht einen Raum erfüllen. ",
+            "Du hechtest die Treppe hinauf und findest dich in einem ovalen Raum, in dem eine Holzkiste auf einem Teppich steht. Daneben steht ein brennender Ofen mit offener Tür. Die Wärme des Ofens durchströmt dich und erfüllt dich mit erneuter Hoffnung.<br><br>",
+            "Die Holzkiste ist blickdicht gezimmert und ist oben offen. Zwei feste Tücher hängen über der Öffnung der Kiste und überlappen in deren Mitte. Am Rand der Öffnung sind sie mit Nägeln befestigt. <br><br>",
+            "Das anfänglich erleichternde Tageslicht beginnt dich zunehmend zu blenden. Dich orientieren fällt dir schwer. Du wirst merklich unruhig."
+          ]
         }
       ],
       "edges": [
         {
           "target": "ktane_chest2",
-          "label": "<++> closer look"
+          "label": "Ich untersuche den Inhalt der Kiste genauer."
         }
       ]
     },
@@ -527,23 +547,16 @@
       "texts": [
         {
           "text": [
-            "<++> instance 1<br>",
-            "find: '{ktane_chest_perm[player][ktane_chest_perm_idx]}'"
+            "Du wühlst in der Kiste und greifst nach einem Gegenstand.<br><br>",
+            "Du findest '{ktane_chest_perm_article_ind[player][ktane_chest_perm_idx]}'"
           ],
           "guard": "player == vegan"
-        },
-        {
-          "text": [
-            "<++> instance 2<br>",
-            "find: '{ktane_chest_perm[player][ktane_chest_perm_idx]}'"
-          ],
-          "guard": "player != vegan"
         }
       ],
       "edges": [
         {
           "target": "ktane_chest2",
-          "label": "<++> search again",
+          "label": "Du wirfst {ktane_chest_perm_article_det[player][ktane_chest_perm_idx]} ins Feuer des Ofens",
           "action": "ktane_chest_perm_idx += 1; ktane_chest_perm_idx %= len(ktane_chest_perm[player])"
         },
         {
