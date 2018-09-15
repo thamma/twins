@@ -111,7 +111,7 @@ ktane_chest_perm_det = [[
     "den Silberspiegel",
     "die Metallbox",
     "das Nadelkissen",
-    "den Bauklotz"
+    "den Bauklotz",
     "die Walnuss",
     "die Gabel",
     "das Taschenbuch",
