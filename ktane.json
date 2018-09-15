@@ -681,7 +681,11 @@
       "texts": [
         {
           "text": [
-            "<++> exit A"
+            "Das Lösen der Rätsel hat offenbar die magische Kraft des Schlüsselfragments geweckt. ",
+            "Zusammen mit dem anderen Fragment sollte es nun mächtig genug sein, um einen Ausgang aus ",
+            "diesen Gängen zu erschaffen.",
+            "<br><br>",
+            "Auf dem Boden vor dir liegen ein paar lose Blätter Papier und ein Bleistift."
           ]
         }
       ],
@@ -692,7 +696,11 @@
       "texts": [
         {
           "text": [
-            "<++> exit B"
+            "Das Lösen der Rätsel hat offenbar die magische Kraft des Schlüsselfragments geweckt. ",
+            "Zusammen mit dem anderen Fragment sollte es nun mächtig genug sein, um einen Ausgang aus ",
+            "diesen Gängen zu erschaffen.",
+            "<br><br>",
+            "Auf dem Boden vor dir liegen ein paar lose Blätter Papier und ein Bleistift."
           ]
         }
       ],

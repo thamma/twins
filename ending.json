@@ -1,0 +1,60 @@
+{
+  "nodes": [
+    {
+      "id": "maze_exit",
+      "texts": [
+        {
+          "text": [
+            "Die Schlüsselfragmente beginnen immer heller und heller zu leuchten. ",
+            "Für einen kurzen Moment bist Du geblendet.",
+            "<br><br>",
+            "Du findest Dich vor dem Eingang der Ruine wieder, wo ein erstaunter Questgeber auf dich wartet"
+          ]
+        }
+      ],
+      "edges": [
+        {
+          "target": "ending1",
+          "label": "Ich rede mit ihm"
+        }
+      ]
+    },
+    {
+      "id": "ending1",
+      "texts": [
+        {
+          "text": [
+            "Ihr habt es geschafft aus der Ruine zu entkommen! Außerdem wurde durch euer Geschick beim Lösen ",
+            "der magischen Rätsel der Veganerhassende Hackfleisch-Dämon wieder verbannt!",
+            "<br><br>",
+            "Dank Eurer Heldentaten können wir nun wieder jeden Tag Katzen streicheln und Anime schauen ",
+            "so viel wir wollen. Nehmt diese Kiste mit dem mysteriösen Geschenk als Belohnung."
+          ]
+        }
+      ],
+      "edges": [
+        {
+          "target": "ending2",
+          "label": "Uhh, vielen Dank!"
+        }
+      ]
+    },
+    {
+      "id": "ending2",
+      "texts": [
+        {
+          "text": [
+            "Allerdings dachte ein seltsamer Abenteurer dass die Kiste ein getarntes Monster sei und hat sie mit ",
+            "Ketten und Zahlenschlössern abgesichert.",
+            "<br><br>",
+            "Es würde wohl 133742 Jahre dauern, alle Kombinationen auszuprobieren..."
+          ]
+        }
+      ],
+      "edges": [
+      ]
+    }
+  ],
+  "env": {
+  }
+}
