@@ -584,7 +584,7 @@
         {
           "target": "ktane_chest2_again",
           "label": "Du packst {ktane_chest_perm_article_det[player][ktane_chest_perm_idx]} zurück in die Kiste.",
-          "action": "ktane_chest_perm_idx += 1; ktane_chest_perm_idx %= len(ktane_chest_perm[player])"
+          "action": "ktane_chest_perm_idx += 1; ktane_chest_perm_idx %= len(ktane_chest_perm_article_det[player])"
         },
         {
           "target": "ktane_chest_fail",
